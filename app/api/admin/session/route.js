@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { adminAuth } from "@/lib/firebase/admin";
+import { adminAuth } from "@/lib/firebase/adminAuthService";
 import { SESSION_COOKIE, SESSION_MAX_AGE_SECONDS } from "@/lib/server/adminAuth";
 
 export async function POST(request) {
