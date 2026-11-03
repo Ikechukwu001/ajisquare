@@ -1,0 +1,145 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none">
+  <defs>
+    <linearGradient id="fabric" x1="120" y1="300" x2="470" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F9F5EC"/>
+      <stop offset="1" stop-color="#D9CDB9"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#EAD5A0"/>
+      <stop offset=".5" stop-color="#AD8548"/>
+      <stop offset="1" stop-color="#E8D19B"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="190" y1="160" x2="360" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7C2A5"/>
+      <stop offset="1" stop-color="#C89572"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Decorative editorial frame -->
+  <circle cx="300" cy="300" r="258" stroke="#B99A66" stroke-opacity=".28"/>
+  <circle cx="300" cy="300" r="244" stroke="#B99A66" stroke-opacity=".16" stroke-dasharray="2 9"/>
+
+  <!-- Tailoring scissors -->
+  <g stroke="url(#gold)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="130" cy="150" r="22"/>
+    <circle cx="166" cy="177" r="22"/>
+    <path d="M146 165 L224 232"/>
+    <path d="M180 179 L224 232"/>
+    <path d="M146 165 L105 96"/>
+    <path d="M180 179 L237 119"/>
+  </g>
+  <circle cx="224" cy="232" r="5" fill="#AD8548"/>
+
+  <!-- Loose thread -->
+  <path d="M369 156 C414 128 448 164 424 190 C400 213 376 185 393 169"
+        stroke="#B99A66" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Fabric underneath the hands -->
+  <path d="M112 344 L366 268 L493 389 L435 501 L137 470 Z"
+        fill="url(#fabric)" stroke="#B6A68F" stroke-width="1.5"/>
+  <path d="M112 344 L191 375 L137 470"
+        stroke="#C3B29A" stroke-width="2"/>
+  <path d="M191 375 C265 406 330 414 435 501"
+        stroke="#B9A68C" stroke-width="1.5" stroke-opacity=".7"/>
+  <path d="M366 268 C345 337 367 405 435 501"
+        stroke="#B9A68C" stroke-width="1.5" stroke-opacity=".7"/>
+  <path d="M145 445 C237 454 320 460 435 501"
+        stroke="#FFFFFF" stroke-width="3" stroke-opacity=".65"/>
+
+  <!-- Fabric edge stitching -->
+  <path d="M125 356 L365 286 L477 391"
+        stroke="#B99A66" stroke-width="2" stroke-dasharray="4 7" stroke-linecap="round"/>
+
+  <!-- Left sleeve -->
+  <path d="M164 176 C189 153 229 163 247 189 L281 254 L228 307 L181 264 C161 242 151 200 164 176Z"
+        fill="#34332F"/>
+  <path d="M178 177 C201 168 222 183 234 207 L266 261 L242 280 L207 237 C193 221 180 200 178 177Z"
+        fill="#494640"/>
+
+  <!-- Right sleeve -->
+  <path d="M365 166 C398 164 419 189 422 219 L414 282 L360 294 L345 231 C340 203 345 179 365 166Z"
+        fill="#34332F"/>
+  <path d="M371 177 C393 178 401 201 399 223 L393 265 L370 271 L362 221 C359 202 361 186 371 177Z"
+        fill="#494640"/>
+
+  <!-- Left hand holding fabric -->
+  <path d="M226 245
+           C219 230 207 218 197 220
+           C187 223 195 241 203 252
+           L224 286
+           C231 299 246 307 260 302
+           L284 287
+           C294 280 289 267 279 266
+           L252 277
+           C243 267 234 254 226 245Z"
+        fill="url(#skin)" stroke="#B78362" stroke-width="1.5"/>
+
+  <!-- Fingers -->
+  <path d="M204 251 C215 263 224 276 233 287"
+        stroke="#B78362" stroke-width="2" stroke-linecap="round"/>
+  <path d="M214 244 C225 255 236 271 244 283"
+        stroke="#B78362" stroke-width="2" stroke-linecap="round"/>
+  <path d="M225 238 C237 250 247 264 255 276"
+        stroke="#B78362" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Right hand guiding the needle -->
+  <path d="M362 239
+           C352 222 346 203 354 192
+           C361 181 372 192 376 205
+           L391 236
+           C398 249 393 264 382 273
+           L348 296
+           C337 304 326 296 331 285
+           L350 258 Z"
+        fill="url(#skin)" stroke="#B78362" stroke-width="1.5"/>
+
+  <!-- Right fingers -->
+  <path d="M354 226 L367 249" stroke="#B78362" stroke-width="2" stroke-linecap="round"/>
+  <path d="M365 220 L378 245" stroke="#B78362" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Needle -->
+  <path d="M323 264 L368 194"
+        stroke="#77746D" stroke-width="2.5" stroke-linecap="round"/>
+  <ellipse cx="369" cy="192" rx="3" ry="5"
+           transform="rotate(32 369 192)"
+           stroke="#77746D" stroke-width="1.5"/>
+
+  <!-- Golden thread from needle -->
+  <path d="M369 192 C395 170 404 155 388 148 C376 143 370 156 377 162"
+        stroke="#B99A66" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Fine needlework details -->
+  <path d="M282 308 L295 317 L308 309 L321 317 L334 308"
+        stroke="#B99A66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M283 323 L296 332 L309 324 L322 332 L335 323"
+        stroke="#B99A66" stroke-width="1.5" stroke-dasharray="2 4" stroke-linecap="round"/>
+
+  <!-- Pin cushion -->
+  <ellipse cx="443" cy="326" rx="34" ry="13" fill="#B99A66" fill-opacity=".2"/>
+  <path d="M410 305 Q443 280 476 305 L470 328 Q443 346 416 328Z"
+        fill="#9A5F51" stroke="#70473D" stroke-width="1.5"/>
+  <path d="M416 307 Q443 290 470 307"
+        stroke="#D4A18A" stroke-width="2"/>
+  <g stroke="url(#gold)" stroke-width="2" stroke-linecap="round">
+    <path d="M429 294 L425 280"/>
+    <path d="M443 290 L443 274"/>
+    <path d="M456 295 L464 282"/>
+  </g>
+  <g fill="#E5C995">
+    <circle cx="425" cy="279" r="2.5"/>
+    <circle cx="443" cy="273" r="2.5"/>
+    <circle cx="465" cy="281" r="2.5"/>
+  </g>
+
+  <!-- Small decorative sparkles -->
+  <g stroke="#B99A66" stroke-width="1.8" stroke-linecap="round">
+    <path d="M118 265 V281 M110 273 H126"/>
+    <path d="M456 111 V127 M448 119 H464"/>
+    <path d="M493 222 V234 M487 228 H499"/>
+  </g>
+
+  <!-- Subtle lower accent -->
+  <path d="M234 536 H366" stroke="#B99A66" stroke-opacity=".65"/>
+  <circle cx="300" cy="536" r="3" fill="#B99A66"/>
+</svg>
