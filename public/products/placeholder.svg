@@ -1,145 +1,176 @@
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
   <defs>
-    <linearGradient id="fabric" x1="120" y1="300" x2="470" y2="520" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#F9F5EC"/>
-      <stop offset="1" stop-color="#D9CDB9"/>
+    <linearGradient id="bg" x2="1" y2="1">
+      <stop stop-color="#102F38"/>
+      <stop offset="1" stop-color="#071820"/>
     </linearGradient>
-    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
-      <stop stop-color="#EAD5A0"/>
-      <stop offset=".5" stop-color="#AD8548"/>
-      <stop offset="1" stop-color="#E8D19B"/>
+    <linearGradient id="gold" x2="1" y2="1">
+      <stop stop-color="#FFF0A6"/>
+      <stop offset=".45" stop-color="#D6A33D"/>
+      <stop offset="1" stop-color="#805018"/>
     </linearGradient>
-    <linearGradient id="skin" x1="190" y1="160" x2="360" y2="330" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#E7C2A5"/>
-      <stop offset="1" stop-color="#C89572"/>
+    <linearGradient id="pink" x2="1" y2="1">
+      <stop stop-color="#FFB8C8"/>
+      <stop offset=".5" stop-color="#E65E8A"/>
+      <stop offset="1" stop-color="#8D2854"/>
     </linearGradient>
+    <linearGradient id="teal" x2="1" y2="1">
+      <stop stop-color="#9AF2E5"/>
+      <stop offset=".5" stop-color="#259F9B"/>
+      <stop offset="1" stop-color="#07545C"/>
+    </linearGradient>
+    <linearGradient id="silver" x2="1" y2="1">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset=".45" stop-color="#A8BBC5"/>
+      <stop offset="1" stop-color="#526976"/>
+    </linearGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
   </defs>
 
-  <!-- Decorative editorial frame -->
-  <circle cx="300" cy="300" r="258" stroke="#B99A66" stroke-opacity=".28"/>
-  <circle cx="300" cy="300" r="244" stroke="#B99A66" stroke-opacity=".16" stroke-dasharray="2 9"/>
+  <!-- Background -->
+  <rect width="1200" height="800" rx="35" fill="url(#bg)"/>
+  <circle cx="600" cy="380" r="310" fill="#1D6670" opacity=".12"/>
+  <circle cx="600" cy="380" r="240" stroke="#D6A33D" opacity=".2" stroke-width="2"/>
+  <circle cx="600" cy="380" r="275" stroke="#D6A33D" opacity=".12" stroke-dasharray="5 12"/>
 
-  <!-- Tailoring scissors -->
-  <g stroke="url(#gold)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="130" cy="150" r="22"/>
-    <circle cx="166" cy="177" r="22"/>
-    <path d="M146 165 L224 232"/>
-    <path d="M180 179 L224 232"/>
-    <path d="M146 165 L105 96"/>
-    <path d="M180 179 L237 119"/>
-  </g>
-  <circle cx="224" cy="232" r="5" fill="#AD8548"/>
-
-  <!-- Loose thread -->
-  <path d="M369 156 C414 128 448 164 424 190 C400 213 376 185 393 169"
-        stroke="#B99A66" stroke-width="2" stroke-linecap="round"/>
-
-  <!-- Fabric underneath the hands -->
-  <path d="M112 344 L366 268 L493 389 L435 501 L137 470 Z"
-        fill="url(#fabric)" stroke="#B6A68F" stroke-width="1.5"/>
-  <path d="M112 344 L191 375 L137 470"
-        stroke="#C3B29A" stroke-width="2"/>
-  <path d="M191 375 C265 406 330 414 435 501"
-        stroke="#B9A68C" stroke-width="1.5" stroke-opacity=".7"/>
-  <path d="M366 268 C345 337 367 405 435 501"
-        stroke="#B9A68C" stroke-width="1.5" stroke-opacity=".7"/>
-  <path d="M145 445 C237 454 320 460 435 501"
-        stroke="#FFFFFF" stroke-width="3" stroke-opacity=".65"/>
-
-  <!-- Fabric edge stitching -->
-  <path d="M125 356 L365 286 L477 391"
-        stroke="#B99A66" stroke-width="2" stroke-dasharray="4 7" stroke-linecap="round"/>
-
-  <!-- Left sleeve -->
-  <path d="M164 176 C189 153 229 163 247 189 L281 254 L228 307 L181 264 C161 242 151 200 164 176Z"
-        fill="#34332F"/>
-  <path d="M178 177 C201 168 222 183 234 207 L266 261 L242 280 L207 237 C193 221 180 200 178 177Z"
-        fill="#494640"/>
-
-  <!-- Right sleeve -->
-  <path d="M365 166 C398 164 419 189 422 219 L414 282 L360 294 L345 231 C340 203 345 179 365 166Z"
-        fill="#34332F"/>
-  <path d="M371 177 C393 178 401 201 399 223 L393 265 L370 271 L362 221 C359 202 361 186 371 177Z"
-        fill="#494640"/>
-
-  <!-- Left hand holding fabric -->
-  <path d="M226 245
-           C219 230 207 218 197 220
-           C187 223 195 241 203 252
-           L224 286
-           C231 299 246 307 260 302
-           L284 287
-           C294 280 289 267 279 266
-           L252 277
-           C243 267 234 254 226 245Z"
-        fill="url(#skin)" stroke="#B78362" stroke-width="1.5"/>
-
-  <!-- Fingers -->
-  <path d="M204 251 C215 263 224 276 233 287"
-        stroke="#B78362" stroke-width="2" stroke-linecap="round"/>
-  <path d="M214 244 C225 255 236 271 244 283"
-        stroke="#B78362" stroke-width="2" stroke-linecap="round"/>
-  <path d="M225 238 C237 250 247 264 255 276"
-        stroke="#B78362" stroke-width="2" stroke-linecap="round"/>
-
-  <!-- Right hand guiding the needle -->
-  <path d="M362 239
-           C352 222 346 203 354 192
-           C361 181 372 192 376 205
-           L391 236
-           C398 249 393 264 382 273
-           L348 296
-           C337 304 326 296 331 285
-           L350 258 Z"
-        fill="url(#skin)" stroke="#B78362" stroke-width="1.5"/>
-
-  <!-- Right fingers -->
-  <path d="M354 226 L367 249" stroke="#B78362" stroke-width="2" stroke-linecap="round"/>
-  <path d="M365 220 L378 245" stroke="#B78362" stroke-width="2" stroke-linecap="round"/>
-
-  <!-- Needle -->
-  <path d="M323 264 L368 194"
-        stroke="#77746D" stroke-width="2.5" stroke-linecap="round"/>
-  <ellipse cx="369" cy="192" rx="3" ry="5"
-           transform="rotate(32 369 192)"
-           stroke="#77746D" stroke-width="1.5"/>
-
-  <!-- Golden thread from needle -->
-  <path d="M369 192 C395 170 404 155 388 148 C376 143 370 156 377 162"
-        stroke="#B99A66" stroke-width="1.8" stroke-linecap="round"/>
-
-  <!-- Fine needlework details -->
-  <path d="M282 308 L295 317 L308 309 L321 317 L334 308"
-        stroke="#B99A66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M283 323 L296 332 L309 324 L322 332 L335 323"
-        stroke="#B99A66" stroke-width="1.5" stroke-dasharray="2 4" stroke-linecap="round"/>
-
-  <!-- Pin cushion -->
-  <ellipse cx="443" cy="326" rx="34" ry="13" fill="#B99A66" fill-opacity=".2"/>
-  <path d="M410 305 Q443 280 476 305 L470 328 Q443 346 416 328Z"
-        fill="#9A5F51" stroke="#70473D" stroke-width="1.5"/>
-  <path d="M416 307 Q443 290 470 307"
-        stroke="#D4A18A" stroke-width="2"/>
-  <g stroke="url(#gold)" stroke-width="2" stroke-linecap="round">
-    <path d="M429 294 L425 280"/>
-    <path d="M443 290 L443 274"/>
-    <path d="M456 295 L464 282"/>
-  </g>
-  <g fill="#E5C995">
-    <circle cx="425" cy="279" r="2.5"/>
-    <circle cx="443" cy="273" r="2.5"/>
-    <circle cx="465" cy="281" r="2.5"/>
+  <!-- Decorative stars -->
+  <g fill="#FCE6A0">
+    <path d="M110 150l7 18 18 7-18 7-7 18-7-18-18-7 18-7z"/>
+    <path d="M1060 170l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/>
+    <path d="M1000 570l5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/>
+    <circle cx="260" cy="230" r="4"/>
+    <circle cx="920" cy="300" r="5"/>
+    <circle cx="160" cy="550" r="4"/>
+    <circle cx="780" cy="120" r="4"/>
   </g>
 
-  <!-- Small decorative sparkles -->
-  <g stroke="#B99A66" stroke-width="1.8" stroke-linecap="round">
-    <path d="M118 265 V281 M110 273 H126"/>
-    <path d="M456 111 V127 M448 119 H464"/>
-    <path d="M493 222 V234 M487 228 H499"/>
+  <!-- Floor shadows -->
+  <g fill="#000" opacity=".4" filter="url(#shadow)">
+    <ellipse cx="580" cy="680" rx="430" ry="35"/>
+    <ellipse cx="200" cy="620" rx="95" ry="20"/>
+    <ellipse cx="940" cy="630" rx="100" ry="25"/>
   </g>
 
-  <!-- Subtle lower accent -->
-  <path d="M234 536 H366" stroke="#B99A66" stroke-opacity=".65"/>
-  <circle cx="300" cy="536" r="3" fill="#B99A66"/>
+  <!-- Mannequin -->
+  <g>
+    <path d="M555 215 Q535 180 550 155 Q565 135 600 145 Q635 135 650 160 Q665 185 640 220 L655 250 Q690 280 685 360 L670 490 Q600 525 530 490 L515 360 Q510 280 545 250Z"
+      fill="url(#pink)" stroke="#FFD3DC" stroke-width="3"/>
+    <path d="M555 215 Q600 240 640 215 L655 250 Q600 280 545 250Z" fill="#8D2854" opacity=".55"/>
+    <path d="M545 250 Q600 290 655 250 Q685 300 672 380 L655 475 Q600 500 545 475 L528 380 Q515 300 545 250Z"
+      fill="url(#pink)"/>
+    <path d="M555 275 Q600 315 645 275" stroke="#FFD7E1" stroke-width="4" opacity=".7"/>
+    <path d="M535 375 Q600 400 665 375" stroke="#FFD7E1" stroke-width="3" opacity=".5"/>
+    <path d="M600 145 L600 115" stroke="url(#gold)" stroke-width="10"/>
+    <path d="M580 115 Q600 95 620 115" stroke="url(#gold)" stroke-width="8"/>
+    <path d="M565 490 L635 490 L650 535 L550 535Z" fill="url(#gold)"/>
+    <path d="M600 535 L600 620" stroke="url(#gold)" stroke-width="12"/>
+    <path d="M520 620 L680 620 L700 638 L500 638Z" fill="url(#gold)"/>
+    <path d="M570 280 Q600 300 630 280" stroke="#FFF1E9" stroke-width="2" stroke-dasharray="4 5"/>
+  </g>
+
+  <!-- Sewing machine -->
+  <g transform="translate(90 350)">
+    <ellipse cx="120" cy="225" rx="125" ry="15" fill="#000" opacity=".35"/>
+    <path d="M25 185 L250 185 L250 210 L25 210Z" fill="url(#silver)"/>
+    <path d="M45 185 L45 85 Q45 25 105 25 L195 25 Q235 25 235 75 L235 135 L205 135 L205 85 Q205 55 175 55 L115 55 Q75 55 75 90 L75 185Z"
+      fill="url(#teal)" stroke="#B7F5E9" stroke-width="3"/>
+    <path d="M75 130 L175 130 L175 165 L75 165Z" fill="#0B4852"/>
+    <path d="M75 130 L175 130 L175 140 L75 140Z" fill="#8BE4D7" opacity=".6"/>
+    <rect x="90" y="85" width="80" height="10" rx="5" fill="#D4FFF6"/>
+    <circle cx="210" cy="105" r="10" fill="url(#gold)"/>
+    <circle cx="210" cy="105" r="4" fill="#FFF2BC"/>
+    <path d="M125 55 L125 0 L145 0 L145 55" fill="url(#silver)"/>
+    <ellipse cx="135" cy="0" rx="18" ry="7" fill="#E4F5F5"/>
+    <path d="M135 55 L135 180" stroke="#DCEEF1" stroke-width="3"/>
+    <path d="M130 180 L140 180 L135 195Z" fill="url(#gold)"/>
+    <path d="M75 165 L180 165" stroke="#FFF" stroke-width="4"/>
+    <path d="M55 185 L225 185" stroke="#E5FFFF" stroke-width="3"/>
+    <circle cx="190" cy="170" r="5" fill="#FFD56A"/>
+  </g>
+
+  <!-- Scissors -->
+  <g transform="translate(835 345) rotate(-25)">
+    <ellipse cx="0" cy="30" rx="27" ry="35" stroke="url(#gold)" stroke-width="13"/>
+    <ellipse cx="0" cy="110" rx="27" ry="35" stroke="url(#gold)" stroke-width="13"/>
+    <path d="M0 60 L105 0 L120 5 L15 85Z" fill="url(#silver)" stroke="#EAF5FF" stroke-width="2"/>
+    <path d="M0 80 L105 145 L120 140 L15 55Z" fill="url(#silver)" stroke="#EAF5FF" stroke-width="2"/>
+    <circle cx="8" cy="70" r="11" fill="url(#gold)" stroke="#FFF0A6" stroke-width="3"/>
+    <path d="M105 0 L120 5 M105 145 L120 140" stroke="#FFF" stroke-width="3"/>
+  </g>
+
+  <!-- Thread spools -->
+  <g transform="translate(850 550)">
+    <ellipse cx="65" cy="110" rx="65" ry="15" fill="#000" opacity=".3"/>
+    <path d="M25 10 L105 10 L95 110 L35 110Z" fill="url(#pink)"/>
+    <path d="M25 10 L105 10 L100 25 L30 25Z" fill="#FFC3D2"/>
+    <path d="M35 110 L95 110 L105 125 L25 125Z" fill="url(#gold)"/>
+    <path d="M35 38 L95 38 M34 48 L96 48 M33 58 L97 58 M32 68 L98 68 M31 78 L99 78 M30 88 L100 88"
+      stroke="#FFE0E7" stroke-width="3" opacity=".7"/>
+  </g>
+
+  <g transform="translate(980 525)">
+    <ellipse cx="40" cy="120" rx="45" ry="12" fill="#000" opacity=".3"/>
+    <path d="M10 15 L70 15 L65 110 L15 110Z" fill="url(#teal)"/>
+    <path d="M10 15 L70 15 L65 28 L15 28Z" fill="#C0FFF2"/>
+    <path d="M15 110 L65 110 L72 122 L8 122Z" fill="url(#gold)"/>
+    <path d="M15 45 L66 45 M15 55 L65 55 M14 65 L65 65 M14 75 L65 75 M13 85 L64 85"
+      stroke="#C7FFF4" stroke-width="3"/>
+  </g>
+
+  <!-- Measuring tape -->
+  <g transform="translate(230 565) rotate(-12)">
+    <path d="M0 55 C-15 -20 140 -30 165 40 C185 100 65 135 30 85 C10 55 65 15 100 45"
+      stroke="url(#gold)" stroke-width="25" fill="none" stroke-linecap="round"/>
+    <path d="M0 55 C-15 -20 140 -30 165 40 C185 100 65 135 30 85 C10 55 65 15 100 45"
+      stroke="#FFF0B0" stroke-width="2" fill="none" stroke-dasharray="5 8"/>
+    <path d="M100 45 L125 65" stroke="#FFF" stroke-width="5"/>
+  </g>
+
+  <!-- Needle and thread -->
+  <g transform="translate(420 550) rotate(25)">
+    <path d="M30 0 L30 150" stroke="url(#silver)" stroke-width="5"/>
+    <ellipse cx="30" cy="-5" rx="9" ry="15" stroke="url(#gold)" stroke-width="4"/>
+    <path d="M30 150 L25 170 L35 170Z" fill="url(#silver)"/>
+    <path d="M30 -20 C-25 -65 100 -100 70 -150" stroke="url(#pink)" stroke-width="4" fill="none"/>
+  </g>
+
+  <!-- Hanger -->
+  <g transform="translate(710 130)">
+    <path d="M65 0 Q80 -30 95 -5 Q105 10 85 20 L85 35"
+      stroke="url(#gold)" stroke-width="8" fill="none" stroke-linecap="round"/>
+    <path d="M85 35 L5 110 Q-5 125 15 125 L180 125 Q200 125 185 110 L85 35Z"
+      stroke="url(#gold)" stroke-width="10" fill="#D6A33D" fill-opacity=".12" stroke-linejoin="round"/>
+    <path d="M15 115 L180 115" stroke="#FFF0A6" stroke-width="3"/>
+  </g>
+
+  <!-- Buttons -->
+  <g transform="translate(400 690)">
+    <circle cx="0" cy="0" r="25" fill="url(#gold)"/>
+    <circle cx="0" cy="0" r="16" fill="#9D6B22"/>
+    <circle cx="-7" cy="-7" r="3" fill="#FFF"/>
+    <circle cx="7" cy="-7" r="3" fill="#FFF"/>
+    <circle cx="-7" cy="7" r="3" fill="#FFF"/>
+    <circle cx="7" cy="7" r="3" fill="#FFF"/>
+  </g>
+  <g transform="translate(470 700)">
+    <circle cx="0" cy="0" r="20" fill="url(#pink)"/>
+    <circle cx="-6" cy="-5" r="3" fill="#FFF"/>
+    <circle cx="6" cy="-5" r="3" fill="#FFF"/>
+    <circle cx="-6" cy="6" r="3" fill="#FFF"/>
+    <circle cx="6" cy="6" r="3" fill="#FFF"/>
+  </g>
+
+  <!-- Title -->
+  <text x="600" y="65" text-anchor="middle"
+    font-family="Georgia,serif" font-size="32"
+    letter-spacing="7" fill="#F9D98B">AjiSquare</text>
+  <text x="600" y="750" text-anchor="middle"
+    font-family="Arial,sans-serif" font-size="17"
+    letter-spacing="6" fill="#B9E7DC">CREATIVITY • STYLE • CRAFTSMANSHIP</text>
 </svg>

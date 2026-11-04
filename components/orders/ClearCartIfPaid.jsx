@@ -2,20 +2,21 @@
 
 import { useEffect } from "react";
 import { useCart } from "@/context/CartContext";
-import { forgetCheckout, getRememberedCheckout } from "@/lib/utils/checkoutMemory";
+import { forgetCheckout, getPendingCheckout } from "@/lib/utils/checkoutMemory";
 
 // Rendered on an order page only when the order is paid.
-// Empties the cart if it was checked out for THIS order (covers a closed tab after paying).
+// Takes this order's items out of the cart straight away (the site-wide sync would also do it shortly after).
 export default function ClearCartIfPaid({ reference }) {
-  const { hydrated, clearCart } = useCart();
+  const { hydrated, removePurchased } = useCart();
 
   useEffect(() => {
     if (!hydrated) return;
-    if (getRememberedCheckout() === reference) {
-      clearCart();
-      forgetCheckout();
+    const pending = getPendingCheckout(reference);
+    if (pending) {
+      removePurchased(pending.items);
+      forgetCheckout(reference);
     }
-  }, [hydrated, reference, clearCart]);
+  }, [hydrated, reference, removePurchased]);
 
   return null;
 }

@@ -96,6 +96,21 @@ function cartReducer(state, action) {
     case "REMOVE":
       return state.filter((i) => i.lineId !== action.lineId);
 
+    // Takes out exactly what was bought. Other items stay, and a partly bought line keeps the rest.
+    case "REMOVE_PURCHASED": {
+      const bought = new Map();
+      for (const item of action.items || []) {
+        const id = makeLineId(item);
+        bought.set(id, (bought.get(id) || 0) + (Number(item.quantity) || 0));
+      }
+      return state.flatMap((line) => {
+        const purchased = bought.get(line.lineId);
+        if (!purchased) return [line];
+        const left = line.quantity - purchased;
+        return left > 0 ? [{ ...line, quantity: left }] : [];
+      });
+    }
+
     case "CLEAR":
       return [];
 
@@ -132,14 +147,25 @@ export function CartProvider({ children }) {
   const addItem = useCallback((item) => dispatch({ type: "ADD", item }), []);
   const updateQuantity = useCallback((lineId, quantity) => dispatch({ type: "SET_QTY", lineId, quantity }), []);
   const removeItem = useCallback((lineId) => dispatch({ type: "REMOVE", lineId }), []);
+  const removePurchased = useCallback((purchased) => dispatch({ type: "REMOVE_PURCHASED", items: purchased }), []);
   const clearCart = useCallback(() => dispatch({ type: "CLEAR" }), []);
 
   const value = useMemo(() => {
     const itemCount = items.reduce((sum, i) => sum + i.quantity, 0);
     // Display only. The server always recalculates real prices from the database.
     const subtotal = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
-    return { items, hydrated, itemCount, subtotal, addItem, updateQuantity, removeItem, clearCart };
-  }, [items, hydrated, addItem, updateQuantity, removeItem, clearCart]);
+    return {
+      items,
+      hydrated,
+      itemCount,
+      subtotal,
+      addItem,
+      updateQuantity,
+      removeItem,
+      removePurchased,
+      clearCart,
+    };
+  }, [items, hydrated, addItem, updateQuantity, removeItem, removePurchased, clearCart]);
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

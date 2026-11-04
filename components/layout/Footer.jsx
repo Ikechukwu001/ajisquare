@@ -22,6 +22,13 @@ const footerLinks = [
   { href: "/contact", label: "Get in Touch" },
 ];
 
+const policyLinks = [
+  { href: "/delivery-and-shipping", label: "Delivery & Shipping" },
+  { href: "/returns-and-refunds", label: "Returns & Refunds" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms of Use" },
+];
+
 export default function Footer() {
   const { contact, social } = siteConfig;
   const socials = Object.entries(social).filter(([, url]) => url);
@@ -225,14 +232,31 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-[#292721]/10">
-        <Container className="flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-[11px] tracking-wide text-[#777168]">
-            © {currentYear} {siteConfig.name}. All rights reserved.
-          </p>
+        <Container className="space-y-4 py-5">
+          <nav
+            aria-label="Policies"
+            className="flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.12em] text-[#625e55]"
+          >
+            {policyLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="transition-colors hover:text-[#9b7a48]"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
 
-          <p className="font-serif text-sm italic text-[#9b7a48]">
-            Wear what feels like you.
-          </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-[11px] tracking-wide text-[#777168]">
+              © {currentYear} {siteConfig.name}. All rights reserved.
+            </p>
+
+            <p className="font-serif text-sm italic text-[#9b7a48]">
+              Wear what feels like you.
+            </p>
+          </div>
         </Container>
       </div>
     </footer>

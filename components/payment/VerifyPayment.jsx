@@ -5,10 +5,10 @@ import Link from "next/link";
 import { CheckCircle2, Loader2, XCircle } from "lucide-react";
 import ButtonLink from "@/components/ui/ButtonLink";
 import { useCart } from "@/context/CartContext";
-import { forgetCheckout, getRememberedCheckout } from "@/lib/utils/checkoutMemory";
+import { forgetCheckout, getPendingCheckout } from "@/lib/utils/checkoutMemory";
 
 export default function VerifyPayment({ reference }) {
-  const { hydrated, clearCart } = useCart();
+  const { hydrated, removePurchased } = useCart();
   const [state, setState] = useState({ status: "checking" });
   const started = useRef(false);
 
@@ -38,14 +38,15 @@ export default function VerifyPayment({ reference }) {
     check();
   }, [check]);
 
-  // The cart is emptied only after the server has confirmed the payment for the items
+  // Once the server has confirmed the payment for the items, those items leave the cart
   useEffect(() => {
     if (state.status !== "success" || state.purpose !== "items" || !hydrated) return;
-    if (getRememberedCheckout() === state.orderReference) {
-      clearCart();
-      forgetCheckout();
+    const pending = getPendingCheckout(state.orderReference);
+    if (pending) {
+      removePurchased(pending.items);
+      forgetCheckout(state.orderReference);
     }
-  }, [state, hydrated, clearCart]);
+  }, [state, hydrated, removePurchased]);
 
   const shipping = state.purpose === "shipping";
   const orderHref = state.orderReference ? `/order/${state.orderReference}` : "/orders";
@@ -68,7 +69,7 @@ export default function VerifyPayment({ reference }) {
         <p className="mt-2 text-muted">
           {shipping
             ? `Thank you. Your shipping payment was confirmed for order ${state.orderReference}.`
-            : `Thank you. Your payment was confirmed for order ${state.orderReference}. We'll contact you about shipping.`}
+            : `Thank you. Your payment was confirmed for order ${state.orderReference}. The items you paid for have been taken out of your cart. We'll contact you about shipping.`}
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <ButtonLink href={orderHref}>View your order</ButtonLink>

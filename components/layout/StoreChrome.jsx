@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
+import CartSync from "@/components/cart/CartSync";
 
 export default function StoreChrome({ children, footer }) {
   const pathname = usePathname();
@@ -13,6 +14,7 @@ export default function StoreChrome({ children, footer }) {
 
   return (
     <>
+      <CartSync />
       <Navbar />
       <main className="flex-1">{children}</main>
       {footer}

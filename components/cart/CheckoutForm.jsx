@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { NIGERIAN_STATES } from "@/lib/utils/nigeria";
 import { validateCheckout } from "@/lib/validation/checkout";
+import { rememberCheckout } from "@/lib/utils/checkoutMemory";
 
-const EMPTY = { fullName: "", phone: "", address: "", city: "", state: "", notes: "" };
+const EMPTY = { fullName: "", phone: "", email: "", address: "", city: "", state: "", notes: "" };
 
 const inputClass = (error) =>
   `w-full border bg-white px-3 py-2.5 text-sm outline-none focus:border-foreground ${
@@ -58,25 +59,26 @@ export default function CheckoutForm({ items, onBack }) {
       return;
     }
 
+    // Only identifiers and quantities are sent. Prices are decided by the server.
+    const lines = items.map((i) => ({
+      productId: i.productId,
+      size: i.size || "",
+      color: i.color || "",
+      quantity: i.quantity,
+    }));
+
     setSubmitting(true);
     try {
       const res = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          customer: cleaned,
-          // Only identifiers and quantities are sent. Prices are decided by the server.
-          items: items.map((i) => ({
-            productId: i.productId,
-            size: i.size || "",
-            color: i.color || "",
-            quantity: i.quantity,
-          })),
-        }),
+        body: JSON.stringify({ customer: cleaned, items: lines }),
       });
       const data = await res.json().catch(() => ({}));
 
       if (res.ok && data.reference) {
+        // Remember exactly what this order contains, so those items leave the cart once it is paid
+        rememberCheckout(data.reference, lines);
         router.push(`/order/${data.reference}`);
         return; // keep the button disabled while navigating
       }
@@ -110,19 +112,33 @@ export default function CheckoutForm({ items, onBack }) {
         />
       </Field>
 
-      <Field id="phone" label="Phone number" error={errors.phone} hint="We'll call or WhatsApp this number about your delivery.">
-        <input
-          id="phone"
-          type="tel"
-          inputMode="tel"
-          autoComplete="tel"
-          placeholder="0803 123 4567"
-          value={values.phone}
-          onChange={(e) => setField("phone", e.target.value)}
-          className={inputClass(errors.phone)}
-          {...aria("phone", true)}
-        />
-      </Field>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field id="phone" label="Phone number" error={errors.phone} hint="We'll call or WhatsApp this number about your delivery.">
+          <input
+            id="phone"
+            type="tel"
+            inputMode="tel"
+            autoComplete="tel"
+            placeholder="0803 123 4567"
+            value={values.phone}
+            onChange={(e) => setField("phone", e.target.value)}
+            className={inputClass(errors.phone)}
+            {...aria("phone", true)}
+          />
+        </Field>
+
+        <Field id="email" label="Email address" error={errors.email} hint="Your payment receipt is sent here.">
+          <input
+            id="email"
+            type="email"
+            autoComplete="email"
+            value={values.email}
+            onChange={(e) => setField("email", e.target.value)}
+            className={inputClass(errors.email)}
+            {...aria("email", true)}
+          />
+        </Field>
+      </div>
 
       <Field id="address" label="Delivery address" error={errors.address}>
         <textarea
@@ -179,8 +195,8 @@ export default function CheckoutForm({ items, onBack }) {
       </Field>
 
       <div className="border border-border bg-white p-4 text-sm text-muted">
-        Delivery is <strong className="text-foreground">not included</strong> in the item total. After you place your
-        order, we'll contact you to confirm the delivery fee for your location.
+        Shipping is <strong className="text-foreground">not included</strong> in the item total. After you place your
+        order, we'll contact you to confirm the shipping fee for your location.
       </div>
 
       {serverError && (
